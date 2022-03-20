@@ -1,5 +1,5 @@
 <head>
-  <title>Leaderboard</title>
+  <title>Server Metrics</title>
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
 </head>
@@ -23,15 +23,15 @@
 </template>
 
 <template name="meteorVersion">
-  <div class="version">Meteor JS version is {{getMeteorVersion}}</div>  
+  <div class="version">Meteor JS version is <span>{{getMeteorVersion}}</span></div>  
 </template>
 
 <template name="meteorServer">
-  <div class="serverName {{#if isPair}} blue {{/if}}">Meteor JS server is {{getMeteorServer}}</div>  
+  <div class="serverName {{#if isPair}}blue{{/if}}">Meteor JS server is <span>{{getMeteorServer}}</span></div>  
 </template>
 
 <template name="ip">
-  <div class="ip">IP is {{getIpServer}}</div>  
+  <div class="ip">IP is <span>{{getIpServer}}</span></div>  
 </template>
 
 <template name="metric">

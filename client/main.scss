@@ -33,6 +33,11 @@ body {
   font-size: 1em;
   margin-bottom: 1em;
   text-align: center;
+
+  span {
+    font-weight: 600;
+    color: rgb(180, 180, 180);
+  }
 }
 
 .serverName {
@@ -46,7 +51,7 @@ body {
 
 
 .board {
-  border-top: 1px solid #f1f1f18c;
+  border-top: 1px solid rgba(180, 180, 180, 0.8);
   counter-reset: ol-counter;
   list-style-type: none;
   margin: 2em 0 1.5em;
@@ -58,7 +63,7 @@ body {
   padding: .5em 0;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(111, 111, 111, 0.502);
+  border: 1px solid rgba(110, 110, 110, 0.5);
 
   &:before {
     color: #999;
@@ -73,6 +78,7 @@ body {
   }
 
   .label {
+    color: rgb(180, 180, 180);
     display: inline-block;
     font-size: 1.25em;
     font-weight: 300;
@@ -80,7 +86,7 @@ body {
   }
 
   .data {
-    color: rgb(187, 187, 187);
+    color: rgb(190, 190, 190);
     display: block;
     float: right;
     font-size: 1.25em;
