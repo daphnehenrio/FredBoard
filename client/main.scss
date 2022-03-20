@@ -1,0 +1,96 @@
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 3em 0;
+  padding: 0;
+  background-color: rgb(31, 31, 46);
+  color: rgb(232, 223, 223);
+}
+
+.outer {
+  margin: 0 auto;
+  max-width: 480px;
+}
+
+.title {
+  font-size: 1.8em;
+  font-weight: 600;
+  letter-spacing: .3em;
+  margin: 0 0 1em;
+  text-align: center;
+  text-indent: .3em;
+  text-transform: uppercase;
+}
+
+.version, .serverName, .ip {
+  color: #999;
+  font-size: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.serverName {
+  border: 1px solid rgb(76, 223, 76);
+  padding: 1em;
+
+  &.blue {
+    border: 1px solid rgb(76, 110, 223);
+  }
+}
+
+
+.board {
+  border-top: 1px solid #f1f1f18c;
+  counter-reset: ol-counter;
+  list-style-type: none;
+  margin: 2em 0 1.5em;
+  padding: 0;
+}
+
+.metric {
+  margin-top: 1em;
+  padding: .5em 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(111, 111, 111, 0.502);
+
+  &:before {
+    color: #999;
+    content: counter(ol-counter);
+    counter-increment: ol-counter;
+    display: inline-block;
+    font-weight: 300;
+    line-height: 3em;
+    text-align: center;
+    vertical-align: middle;
+    width: 3em;
+  }
+
+  .label {
+    display: inline-block;
+    font-size: 1.25em;
+    font-weight: 300;
+    vertical-align: middle;
+  }
+
+  .data {
+    color: rgb(187, 187, 187);
+    display: block;
+    float: right;
+    font-size: 1.25em;
+    font-weight: 600;
+    line-height: 2.4em;
+    padding-right: 1.25em;
+  }
+
+}
+
+
+
+
