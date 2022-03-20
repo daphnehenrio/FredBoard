@@ -32,6 +32,10 @@ if (Meteor.isClient) {
 
   // ? helpers
   Template.board.helpers({
+    /**
+     * @description Get the metrics from the database
+     * @returns Array - metrics
+     */
     metrics: function () {
       return Metrics.find();
     },
@@ -47,18 +51,20 @@ if (Meteor.isClient) {
     getMeteorServer: function(){
       return Template.instance().hostname.get();
     },
+
+    /**
+     * @description Check if the last number of hostname is pair
+     * @returns Boolean
+     */
     isPair: function() {
       const hostName = Template.instance().hostname.get();
       if (!hostName) { return false; }
-      let number = parseInt(hostName.substr(hostName.length - 1), 10);
-
-      if (number === NaN) {
+      
+      const number = parseInt(hostName.substr(hostName.length - 1), 10);
+      if (number === NaN || !(number % 2)) {
         return false;
-      }
-      if ((number % 2)) {
-        return true;
       } else {
-        return false;
+        return true;
       }
     }
   });
