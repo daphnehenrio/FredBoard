@@ -5,14 +5,19 @@
 </head>
 
 <body>
+  {{> outer}}
+</body>
+
+<template name="outer">
   <div class="outer">
     <h1 class="title">Server Metrics</h1>
+    {{> refreshToggle}}
     {{> meteorVersion}}
     {{> meteorServer}}
     {{> ip}}
     {{> board}}
   </div>
-</body>
+</template>
 
 <template name="board">
   <ol class="board">
@@ -39,4 +44,13 @@
     <span class="label">{{label}}</span>
     <span class="data">{{data}}</span>
   </li>
+</template>
+
+<template name="refreshToggle">
+  <div class="refresh">
+    <label class="switch js-toggle-refresh">
+      <span class="slider round {{#if checked}}checked{{/if}}"></span>
+    </label>
+    <span>Refresh page auto</span>
+  </div>
 </template>

@@ -5,7 +5,27 @@ import { ReactiveVar } from 'meteor/reactive-var'
 import { Metrics } from '../lib/collections/metrics';
 
 if (Meteor.isClient) {
+  //? Constants
+  const usrStorage = window.localStorage;
+  const isTrue = (value) => value === 'true';
+
+  const reload = () => {
+    const interval = Meteor.setInterval(() => {
+      console.log('reload');
+      if (isTrue(usrStorage.getItem('reload'))) {
+        window.location.reload()
+      }
+    }, 5000);
+    return interval;
+  };
+
   // ? onCreated
+  Template.body.onCreated(function bodyOnCreated() { 
+    if (!usrStorage.getItem('reload')) {
+      usrStorage.setItem('reload', "false");
+    }
+   });
+
   Template.meteorServer.onCreated(function(){
     this.hostname = new ReactiveVar();
     Meteor.call("getHostname", (err, data) => {
@@ -28,7 +48,21 @@ if (Meteor.isClient) {
 
   Template.board.onCreated(function(){
     Meteor.subscribe('metrics');
-  })
+  });
+
+  Template.refreshToggle.onCreated(function(){
+    this.checked = new ReactiveVar(isTrue((usrStorage.getItem('reload'))));
+    this.interval = new ReactiveVar();
+    if(this.checked.get()){
+      this.interval = reload();
+    } else {
+      Meteor.clearInterval(this.interval);
+    }
+  });
+
+  Template.refreshToggle.onDestroyed(function () {
+    Meteor.clearInterval(this.interval);
+  });
 
   // ? helpers
   Template.board.helpers({
@@ -74,4 +108,22 @@ if (Meteor.isClient) {
       return Template.instance().ip.get();
     }
   })
+
+  Template.refreshToggle.helpers({
+    checked: function(){
+      return Template.instance().checked.get();
+    }
+  })
+
+
+  Template.refreshToggle.events({
+    'click .js-toggle-refresh': function(event) {
+      const checked = !Template.instance().checked.get();
+      
+      checked ? reload() : Meteor.clearInterval(Template.instance().interval);
+
+      usrStorage.setItem('reload', checked);
+      Template.instance().checked.set(checked);
+    }
+  });
 }
