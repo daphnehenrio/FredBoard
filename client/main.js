@@ -4,14 +4,16 @@ import { ReactiveVar } from 'meteor/reactive-var'
 
 import { Metrics } from '../lib/collections/metrics';
 
+interval = 0;
+
 if (Meteor.isClient) {
   //? Constants
   const usrStorage = window.localStorage;
   const isTrue = (value) => value === 'true';
+  
 
   const reload = () => {
-    const interval = Meteor.setInterval(() => {
-      console.log('reload');
+    interval = Meteor.setInterval(() => {
       if (isTrue(usrStorage.getItem('reload'))) {
         window.location.reload()
       }
@@ -52,11 +54,11 @@ if (Meteor.isClient) {
 
   Template.refreshToggle.onCreated(function(){
     this.checked = new ReactiveVar(isTrue((usrStorage.getItem('reload'))));
-    this.interval = new ReactiveVar();
+
     if(this.checked.get()){
-      this.interval = reload();
+      interval = reload();
     } else {
-      Meteor.clearInterval(this.interval);
+      Meteor.clearInterval(interval);
     }
   });
 
@@ -117,10 +119,10 @@ if (Meteor.isClient) {
 
 
   Template.refreshToggle.events({
-    'click .js-toggle-refresh': function(event) {
+    'click .js-toggle-refresh': function() {
       const checked = !Template.instance().checked.get();
-      
-      checked ? reload() : Meteor.clearInterval(Template.instance().interval);
+
+      checked ? reload() : Meteor.clearInterval(interval);
 
       usrStorage.setItem('reload', checked);
       Template.instance().checked.set(checked);
