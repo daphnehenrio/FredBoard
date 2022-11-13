@@ -133,10 +133,10 @@ body {
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
-  
+
   &.round {
     border-radius: 25px;
-  
+
     &:before {
       border-radius: 50%;
     }

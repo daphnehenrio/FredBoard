@@ -10,7 +10,6 @@ if (Meteor.isClient) {
   //? Constants
   const usrStorage = window.localStorage;
   const isTrue = (value) => value === 'true';
-  
 
   const reload = () => {
     interval = Meteor.setInterval(() => {
@@ -95,7 +94,7 @@ if (Meteor.isClient) {
     isPair: function() {
       const hostName = Template.instance().hostname.get();
       if (!hostName) { return false; }
-      
+
       const number = parseInt(hostName.substr(hostName.length - 1), 10);
       if (number === NaN || !(number % 2)) {
         return false;
@@ -116,7 +115,6 @@ if (Meteor.isClient) {
       return Template.instance().checked.get();
     }
   })
-
 
   Template.refreshToggle.events({
     'click .js-toggle-refresh': function() {
