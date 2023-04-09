@@ -4,7 +4,7 @@ import { ReactiveVar } from 'meteor/reactive-var'
 
 import { Metrics } from '../lib/collections/metrics';
 
-interval = 0;
+let interval = 0;
 
 if (Meteor.isClient) {
   //? Constants
@@ -21,7 +21,7 @@ if (Meteor.isClient) {
   };
 
   // ? onCreated
-  Template.body.onCreated(function bodyOnCreated() { 
+  Template.body.onCreated(function bodyOnCreated() {
     if (!usrStorage.getItem('reload')) {
       usrStorage.setItem('reload', "false");
     }
@@ -78,7 +78,7 @@ if (Meteor.isClient) {
 
   Template.meteorVersion.helpers({
     getMeteorVersion: function() {
-      return Meteor.release; 
+      return Meteor.release;
     },
   });
 
@@ -96,11 +96,7 @@ if (Meteor.isClient) {
       if (!hostName) { return false; }
 
       const number = parseInt(hostName.substr(hostName.length - 1), 10);
-      if (number === NaN || !(number % 2)) {
-        return false;
-      } else {
-        return true;
-      }
+      return !(Number.isNaN(number) || !(number % 2));
     }
   });
 

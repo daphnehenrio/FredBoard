@@ -11,8 +11,8 @@ const os = require("os");
   const result = [];
   for (let id in netInterfaces) {
     const netFace = netInterfaces[id];
-    for (let i = 0; i < netFace.length; i++) {
-      const ip = netFace[i];
+    for (const element of netFace) {
+      const ip = element;
       if (ip.internal === false && ip.family === 'IPv4') {
         result.push(ip.address);
       }
