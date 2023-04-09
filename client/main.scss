@@ -7,15 +7,17 @@ body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: normal;
-  margin: 3em 0;
+  margin: 3em 0 0 0;
   padding: 0;
   background-color: rgb(31, 31, 46);
   color: rgb(232, 223, 223);
+  min-height: 100vh;
 }
 
 .outer {
   margin: 0 auto;
-  max-width: 480px;
+  padding: 1em 0;
+  max-width: 600px;
 }
 
 .title {
@@ -28,7 +30,7 @@ body {
   text-transform: uppercase;
 }
 
-.version, .serverName, .ip {
+.version, .serverName, .ip, .mongo {
   color: #999;
   font-size: 1em;
   margin-bottom: 1em;
@@ -36,7 +38,7 @@ body {
 
   span {
     font-weight: 600;
-    color: rgb(180, 180, 180);
+    color: rgb(21, 108, 137);
   }
 }
 
@@ -51,7 +53,6 @@ body {
 
 
 .board {
-  border-top: 1px solid rgba(180, 180, 180, 0.8);
   counter-reset: ol-counter;
   list-style-type: none;
   margin: 2em 0 1.5em;
@@ -120,7 +121,10 @@ body {
 
 }
 
-
+hr {
+  margin: 30px 0;
+  border: 1px solid rgba(180, 180, 180, 0.8);
+}
 
 /* The slider */
 .slider {
