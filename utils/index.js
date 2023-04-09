@@ -20,10 +20,10 @@ const os = require("os");
   }
   // log info result
   if (result.length === 0) {
-    console.info("NO IP ADDRESS FOUND");
+    console.info("❌ NO IP ADDRESS FOUND ❌");
   }
   if (result.length > 1) {
-    console.info("MORE THAN ONE IP ADDRESS FOUND", result);
+    console.info("❗❗ MORE THAN ONE IP ADDRESS FOUND ❗❗ ", result);
   }
   return result[0];
 }

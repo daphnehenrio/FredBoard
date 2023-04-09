@@ -10,7 +10,7 @@ import getIp from '../utils/index';
 if (Meteor.isServer) {
   //? Startup
   Meteor.startup(function () {
-    console.log("Meteor server started");
+    console.info("Meteor server started ✅");
   });
 
   //? Methods
