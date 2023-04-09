@@ -10,13 +10,13 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     if (Metrics.find().count() === 0) {
       console.log("Metrics collection is empty, inserting some data");
-      const labels = ["label 1", "label 2", "label 3"];
-      labels.forEach(function (label) {
+
+      for (let i = 0; i < 10; i++) {
         Metrics.insert({
-          label,
+          label: `label ${i + 1}`,
           data: Math.floor(Random.fraction() * 10) * 5
         });
-      });
+      }
     }
   });
 }
