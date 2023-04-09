@@ -9,7 +9,7 @@ import { Metrics } from '../../lib/collections/metrics';
 if (Meteor.isServer) {
   Meteor.startup(function () {
     if (Metrics.find().count() === 0) {
-      console.log("Metrics collection is empty, inserting some data");
+      console.info("💾➕ Metrics collection is empty, inserting some data ➕💾");
 
       for (let i = 0; i < 10; i++) {
         Metrics.insert({

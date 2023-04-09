@@ -2,7 +2,7 @@ import { WebApp } from 'meteor/webapp';
 
 if (Meteor.isServer) {
   WebApp.connectHandlers.use((req, res, next) => {
-    console.log({
+    console.info("↪ 📡📡📡📡📡 WebApp.connectHandlers: ", {
       time: new Date().toISOString(),
       ip: req.socket.remoteAddress,
       method: req.method,
@@ -11,5 +11,5 @@ if (Meteor.isServer) {
       resStatus: res.statusCode,
     })
     next();
-  });  
+  });
 }
