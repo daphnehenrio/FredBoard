@@ -47,6 +47,23 @@ if (Meteor.isClient) {
     });
   });
 
+  Template.mongo.onCreated(function(){
+    this.mongoPrimary = new ReactiveVar();
+    this.mongoUrl = new ReactiveVar();
+    Meteor.call("getMongoPrimary", async (err, data) => {
+      if(err) {
+        throw err;
+      }
+      this.mongoPrimary.set(data);
+    });
+    Meteor.call("getMongoUrl", (err, data) => {
+      if(err) {
+        throw err;
+      }
+      this.mongoUrl.set(data);
+    });
+  });
+
   Template.board.onCreated(function(){
     Meteor.subscribe('metrics');
   });
@@ -103,6 +120,15 @@ if (Meteor.isClient) {
   Template.ip.helpers({
     getIpServer: function(){
       return Template.instance().ip.get();
+    }
+  })
+
+  Template.mongo.helpers({
+    getMongoPrimary: function(){
+      return Template.instance().mongoPrimary.get();
+    },
+    getMongoUrl: function(){
+      return Template.instance().mongoUrl.get();
     }
   })
 

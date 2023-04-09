@@ -15,6 +15,9 @@
     {{> meteorVersion}}
     {{> meteorServer}}
     {{> ip}}
+    <hr />
+    {{> mongo}}
+    <hr />
     {{> board}}
   </div>
 </template>
@@ -37,6 +40,11 @@
 
 <template name="ip">
   <div class="ip">IP is <span>{{getIpServer}}</span></div>
+</template>
+
+<template name="mongo">
+  <div class="mongo">Mongo url is <span>{{getMongoUrl}}</span></div>
+  <div class="mongo">The current PRIMARY mongo server is on host <span>{{getMongoPrimary.hostname}}</span> and port <span>{{getMongoPrimary.port}}</span></div>
 </template>
 
 <template name="metric">
