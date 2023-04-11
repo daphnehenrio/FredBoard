@@ -25,7 +25,7 @@ if (Meteor.isClient) {
     if (!usrStorage.getItem('reload')) {
       usrStorage.setItem('reload', "false");
     }
-   });
+  });
 
   Template.meteorServer.onCreated(function(){
     this.hostname = new ReactiveVar();
@@ -78,6 +78,7 @@ if (Meteor.isClient) {
     }
   });
 
+  // ? onDestroyed
   Template.refreshToggle.onDestroyed(function () {
     Meteor.clearInterval(this.interval);
   });
@@ -138,6 +139,7 @@ if (Meteor.isClient) {
     }
   })
 
+  // ? events
   Template.refreshToggle.events({
     'click .js-toggle-refresh': function() {
       const checked = !Template.instance().checked.get();
