@@ -19,3 +19,4 @@ ecmascript@0.16.2
 blaze
 reactive-var@1.0.11
 fourseven:scss
+iron:router
