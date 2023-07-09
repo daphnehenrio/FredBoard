@@ -118,6 +118,12 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.rootUrl.helpers({
+    rootUrl() {
+      return Meteor.absoluteUrl();
+    },
+  });
+
   Template.ip.helpers({
     getIpServer: function(){
       return Template.instance().ip.get();

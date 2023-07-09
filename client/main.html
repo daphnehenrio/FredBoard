@@ -15,6 +15,8 @@
     {{> meteorVersion}}
     {{> meteorServer}}
     {{> ip}}
+    {{> rootUrl}}
+
     <hr />
     {{> mongo}}
     <hr />
@@ -40,6 +42,10 @@
 
 <template name="ip">
   <div class="ip">IP is <span>{{getIpServer}}</span></div>
+</template>
+
+<template name="rootUrl">
+  <div class="rootUrl">ROOT_URL : <span>{{rootUrl}}</span></div>
 </template>
 
 <template name="mongo">

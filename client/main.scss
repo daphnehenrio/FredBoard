@@ -30,7 +30,8 @@ body {
   text-transform: uppercase;
 }
 
-.version, .serverName, .ip, .mongo {
+.version, .serverName, .ip, .mongo, .rootUrl {
+
   color: #999;
   font-size: 1em;
   margin-bottom: 1em;
