@@ -170,6 +170,16 @@ hr {
   }
 }
 
+.error {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin: 0 0 1em;
+  text-align: center;
+
+  &.red {
+    color: rgb(255, 0, 0);
+  }
+}
 
 
 

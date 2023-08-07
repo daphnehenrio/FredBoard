@@ -5,6 +5,7 @@ const os = require("os");
 
 //? Import local
 import getIp from '../utils/index';
+import { Metrics } from '../lib/collections/metrics';
 
 //? Server
 if (Meteor.isServer) {
@@ -45,6 +46,14 @@ if (Meteor.isServer) {
     },
     getMongoUrl: function() {
       return process.env.MONGO_URL;
-    }
+    },
+    autoUpdateMetrics: function() {
+      const value = Math.floor(Math.random() * 151);
+      try {
+        Metrics.update({ label: 'label 1' }, { $set: { data: value } });
+      } catch (error) {
+        throw new Meteor.Error("update-failed", "autoUpdateMetrics failed");
+      }
+    },
  });
 };

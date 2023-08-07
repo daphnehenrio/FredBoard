@@ -21,6 +21,8 @@
     {{> mongo}}
     <hr />
     {{> board}}
+    <hr />
+    {{> error}}
   </div>
 </template>
 
@@ -67,4 +69,9 @@
     </label>
     <span>Refresh page auto (5s)</span>
   </div>
+</template>
+
+
+<template name="error">
+  <div class="error {{#if count}}red{{/if}}">Error counter <span>{{count}}</span></div>
 </template>

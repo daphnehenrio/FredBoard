@@ -5,6 +5,7 @@ import { ReactiveVar } from 'meteor/reactive-var'
 import { Metrics } from '../lib/collections/metrics';
 
 let interval = 0;
+let errorCounter = new ReactiveVar(0);
 
 if (Meteor.isClient) {
   //? Constants
@@ -66,6 +67,12 @@ if (Meteor.isClient) {
 
   Template.board.onCreated(function(){
     Meteor.subscribe('metrics');
+    Meteor.setInterval(() => {
+      Meteor.call('autoUpdateMetrics', (error) => {
+        if (error) {
+          errorCounter.set(errorCounter.get() + 1);
+        }
+    })}, 1000);
   });
 
   Template.refreshToggle.onCreated(function(){
@@ -142,6 +149,12 @@ if (Meteor.isClient) {
   Template.refreshToggle.helpers({
     checked: function(){
       return Template.instance().checked.get();
+    }
+  })
+
+  Template.error.helpers({
+    count: function(){
+      return errorCounter.get();
     }
   })
 
